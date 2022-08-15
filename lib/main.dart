@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/config/app_router.dart';
 import 'package:food_delivery_app/config/theme.dart';
-import 'package:food_delivery_app/home/view/home_screen.dart';
+import 'package:food_delivery_app/home_screen/view/home_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -14,9 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      navigatorKey: Routes.navigatorKey,
      theme: theme(),
-     onGenerateRoute: AppRouter.onGenerateRoute,
-     initialRoute: HomeScreen.routeName,
+    //  onGenerateRoute: AppRouter.onGenerateRoute,
+    //  initialRoute: HomeScreen.routeName,
+    home: const HomeScreen(),
     );
   }
 }
