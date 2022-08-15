@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
      theme: theme(),
     //  onGenerateRoute: AppRouter.onGenerateRoute,
     //  initialRoute: HomeScreen.routeName,
-    home: const HomeScreen(),
+    home:   HomeScreen(),
     );
   }
 }

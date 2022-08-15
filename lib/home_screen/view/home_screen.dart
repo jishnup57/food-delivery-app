@@ -1,79 +1,102 @@
+import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/config/const.dart';
-import 'package:food_delivery_app/config/style.dart';
+import 'package:food_delivery_app/home_screen/widget/item_title.dart';
+import 'package:food_delivery_app/home_screen/widget/itemcard.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
   static const String routeName = '/';
 
   static Route route() {
     return MaterialPageRoute(
-      builder: (_) => const HomeScreen(),
+      builder: (_) => HomeScreen(),
       settings: const RouteSettings(name: routeName),
     );
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      key: _scaffoldKey,
       appBar: AppBar(
+        toolbarHeight: 0,
         elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
-          ),
-        ],
       ),
+      drawer: const NavDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 8,
         ),
         child: ListView(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  child: const Image(
+                    image: AssetImage('asset/images/hamberger2.png'),
+                    width: 35,
+                    height: 35,
+                  ),
+                  onTap: () {
+                    _scaffoldKey.currentState?.openDrawer();
+                  },
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.shopping_cart,
+                    size: 30,
+                  ),
+                ),
+              ],
+            ),
             kHight10,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-              Container(
-                height: 50,
-                width: 310,
-                decoration:  BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10,),
-                  border: Border.all(
-                    color: Colors.grey.shade500,
-                    width: 1.5
-                  )
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:8.0),
-                  child: TextFormField(
-                    decoration:  InputDecoration(
-                      hintText: 'Type Here for Search...',
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      hintStyle: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontSize: 22
+                Container(
+                  height: 50,
+                  width: 310,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(
+                        10,
                       ),
-
+                      border:
+                          Border.all(color: Colors.grey.shade500, width: 1.5)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Type Here for Search...',
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        hintStyle: TextStyle(
+                            color: Colors.grey.shade500, fontSize: 20),
+                      ),
                     ),
                   ),
                 ),
-              ),
                 Container(
-                height: 50,
-                width: 50,
-                decoration:  BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(10,),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.search,
+                    color: Colors.white,
+                    size: 30,
+                  ),
                 ),
-                child:const Icon(Icons.search,color: Colors.white,size: 30,) ,
-              ),
-             
-            ],),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Container(
@@ -93,30 +116,16 @@ class HomeScreen extends StatelessWidget {
                       child: CircleAvatar(
                         backgroundColor: Colors.green.shade200,
                         radius: 50,
-                        child: Stack(
-                          children: [
-                            Text(
-                              '\n\n Vegans',
-                              style: TextStyle(
-                                fontSize: 20,
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color =Colors.white ,
-                              ),
+                        child: BorderedText(
+                          strokeWidth: 3.0,
+                          strokeColor: Colors.green,
+                          child: const Text(
+                            "\n\nVegans",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
                             ),
-                             Text(
-                              '\n\n Vegans',
-                              style: TextStyle(
-                                fontSize: 20,
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green.shade800,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     )
@@ -125,83 +134,33 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             kHight10,
-            Row(
-              children: [
-                Text(
-                  'Vegitables',
-                  style: gFontsLato(),
-                ),
-                const Spacer(),
-                Text(
-                  'View All',
-                  style: gFontsLato(
-                    fw: FontWeight.normal
-
-                  ),
-                ),
-                const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 18,
-                ),
-              ],
+            const ItemsHeading(
+              title: 'Vegitables',
             ),
             kHight10,
-            LimitedBox(
-              maxHeight: 210,
-              child: ListView.builder(
-                itemBuilder: (BuildContext ctx, int index) => Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    height: 200,
-                    width: 140,
-                    child: Column(
-                      children: [
-                        Hero(
-                          tag: 'tomato',
-                          child: Container(
-                            height: 130,
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage('asset/images/tomato.png'))),
-                          ),
-                        ),
-                        Text(
-                          'Tomato',
-                          style: gFontsLato(fw: FontWeight.w800),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              " \$200",
-                              style: gFontsLato(fw: FontWeight.w900),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.favorite_border_outlined,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-              ),
+            const MainItemCard(
+              product: 'tomato',
+            ),
+            kHight10,
+            const ItemsHeading(
+              title: 'Fruits',
+            ),
+            kHight10,
+            const MainItemCard(
+              product: 'banana',
             )
           ],
         ),
       ),
     );
+  }
+}
+
+class NavDrawer extends StatelessWidget {
+  const NavDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Drawer();
   }
 }

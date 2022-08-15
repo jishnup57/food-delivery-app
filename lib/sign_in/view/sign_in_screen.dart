@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:food_delivery_app/home_screen/view/home_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:bordered_text/bordered_text.dart';
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -46,8 +46,20 @@ class _SignInState extends State<SignIn> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const AppLogo(),
-            const SizedBox(
+           // const AppLogo(),
+             BorderedText(
+                strokeWidth: 10.0,
+                
+                strokeColor: Colors.green,
+                child: const Text(
+                  "Vegans",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 100,
+                  ),
+                ),
+              ),
+             const SizedBox(
               height:30,
             ),
             SignInButton(Buttons.Google,
@@ -55,7 +67,7 @@ class _SignInState extends State<SignIn> {
                     _googleSignUp().then(
                   (value) => Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (ctx) => const HomeScreen(),
+                      builder: (ctx) =>  HomeScreen(),
                     ),
                   ),
                 );
@@ -79,9 +91,11 @@ class AppLogo extends StatelessWidget {
     this. fSize=70,
     this. letterSpacing=5,
     this. strokeWidth=10,
+    this.name='',
   }) : super(key: key);
   
 final  double fSize;
+final  String name;
 final double letterSpacing;
 final double strokeWidth;
   @override
@@ -89,7 +103,7 @@ final double strokeWidth;
     return Stack(
         children: [
           Text(
-    'Vegans',
+    '${name}Vegans',
     style: TextStyle(
       fontSize: fSize,
       letterSpacing: letterSpacing,
@@ -100,11 +114,11 @@ final double strokeWidth;
         ..color = Colors.green.shade800,
     ),
           ),
-          const Text(
-    'Vegans',
+           Text(
+    '${name}Vegans',
     style: TextStyle(
-      fontSize: 70,
-      letterSpacing: 5,
+      fontSize: fSize,
+      letterSpacing: letterSpacing,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
