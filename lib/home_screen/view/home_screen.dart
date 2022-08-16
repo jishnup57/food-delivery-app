@@ -1,8 +1,9 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/config/const.dart';
+import 'package:food_delivery_app/home_screen/widget/fruit_card_items.dart';
 import 'package:food_delivery_app/home_screen/widget/item_title.dart';
-import 'package:food_delivery_app/home_screen/widget/itemcard.dart';
+import 'package:food_delivery_app/home_screen/widget/vegcardshow.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -138,16 +139,16 @@ class HomeScreen extends StatelessWidget {
               title: 'Vegitables',
             ),
             kHight10,
-            const MainItemCard(
-              product: 'tomato',
+            const VegItemCard(
+           
             ),
             kHight10,
             const ItemsHeading(
               title: 'Fruits',
             ),
             kHight10,
-            const MainItemCard(
-              product: 'banana',
+            const FruitItemCard(
+              
             )
           ],
         ),
