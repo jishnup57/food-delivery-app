@@ -27,17 +27,20 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bordered_text: ^2.0.0
+  cached_network_image: ^3.2.1
+  cloud_firestore: ^3.4.4
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.6.3
   firebase_core: ^1.20.1
   flutter:
     sdk: flutter
-  flutter_signin_button: ^2.0.0
-  google_sign_in: ^5.4.1
-  google_fonts: ^3.0.1
   flutter_rating_bar: ^4.0.1
+  flutter_signin_button: ^2.0.0
   font_awesome_flutter: ^9.2.0
-  bordered_text: ^2.0.0
+  google_fonts: ^3.0.1
+  google_sign_in: ^5.4.1
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0

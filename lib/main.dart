@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/config/app_router.dart';
 import 'package:food_delivery_app/config/theme.dart';
 import 'package:food_delivery_app/home_screen/view/home_screen.dart';
+import 'package:food_delivery_app/home_screen/view_model/home_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,13 +18,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: Routes.navigatorKey,
-     theme: theme(),
-    //  onGenerateRoute: AppRouter.onGenerateRoute,
-    //  initialRoute: HomeScreen.routeName,
-    home:   HomeScreen(),
+    return  MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => HomeProv(),)
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: Routes.navigatorKey,
+       theme: theme(),
+      //  onGenerateRoute: AppRouter.onGenerateRoute,
+      //  initialRoute: HomeScreen.routeName,
+      home:   HomeScreen(),
+      ),
     );
   }
 }
