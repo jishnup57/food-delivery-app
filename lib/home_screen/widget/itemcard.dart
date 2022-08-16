@@ -37,7 +37,7 @@ class MainItemCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Tomato',
+                  product,
                   style: gFontsLato(fw: FontWeight.w800),
                 ),
                 Row(

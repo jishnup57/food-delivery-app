@@ -46,7 +46,6 @@ class _SignInState extends State<SignIn> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           // const AppLogo(),
              BorderedText(
                 strokeWidth: 10.0,
                 
@@ -85,45 +84,3 @@ class _SignInState extends State<SignIn> {
   }
 }
 
-class AppLogo extends StatelessWidget {
-  const AppLogo({
-    Key? key,
-    this. fSize=70,
-    this. letterSpacing=5,
-    this. strokeWidth=10,
-    this.name='',
-  }) : super(key: key);
-  
-final  double fSize;
-final  String name;
-final double letterSpacing;
-final double strokeWidth;
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-        children: [
-          Text(
-    '${name}Vegans',
-    style: TextStyle(
-      fontSize: fSize,
-      letterSpacing: letterSpacing,
-      fontWeight: FontWeight.bold,
-      foreground: Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = strokeWidth
-        ..color = Colors.green.shade800,
-    ),
-          ),
-           Text(
-    '${name}Vegans',
-    style: TextStyle(
-      fontSize: fSize,
-      letterSpacing: letterSpacing,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-          ),
-        ],
-      );
-  }
-}

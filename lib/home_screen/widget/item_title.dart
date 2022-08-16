@@ -18,14 +18,14 @@ class ItemsHeading extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          'View All',
+          'view all',
           style: gFontsLato(
-              fw: FontWeight.normal, clr: Colors.grey.shade600),
+              fw: FontWeight.normal, clr: Colors.grey.shade400),
         ),
         Icon(
           Icons.arrow_forward_ios_rounded,
           size: 18,
-          color: Colors.grey.shade600,
+          color: Colors.grey.shade400,
         ),
       ],
     );

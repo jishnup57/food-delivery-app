@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         hintStyle: TextStyle(
-                            color: Colors.grey.shade500, fontSize: 20),
+                            color: Colors.grey.shade300, fontSize: 20),
                       ),
                     ),
                   ),
