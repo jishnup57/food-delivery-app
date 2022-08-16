@@ -23,4 +23,14 @@ class ProductModel {
       rating: snapshot['rating'],
     );
   }
+    factory ProductModel.fromJson1(
+    Map<String, dynamic> json) {
+    return ProductModel(
+      id: json['id'],
+      image: json['image'],
+      name: json['name'],
+      price: json['price'],
+      rating: json['rating'],
+    );
+  }
 }
