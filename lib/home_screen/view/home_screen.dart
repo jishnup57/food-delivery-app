@@ -147,7 +147,7 @@ class HomeScreen extends StatelessWidget {
               title: 'Fruits',
             ),
             kHight10,
-             FruitItemCard(
+             const FruitItemCard(
               
             )
           ],
