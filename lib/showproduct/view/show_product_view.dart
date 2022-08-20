@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/config/app_router.dart';
 import 'package:food_delivery_app/config/const.dart';
+import 'package:food_delivery_app/home_screen/model/product_model.dart';
 import 'package:food_delivery_app/showproduct/widget/nutrition_text.dart';
 
 class ShowProduct extends StatelessWidget {
-  const ShowProduct({Key? key}) : super(key: key);
-
+  const ShowProduct({Key? key,required this.item}) : super(key: key);
+  final ProductModel item;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow.withOpacity(0.8),
+        backgroundColor:  Color(item.bgColor),
         leading: TextButton.icon(
           icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () =>Routes.pop(),
           label: Text(
             'BACK',
             style: kTextStyleAppBar.copyWith(fontSize: 18),
           ),
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite_outline),
+            onPressed: () {},
+          ),
           IconButton(
             icon: const Icon(Icons.shopping_bag_outlined),
             onPressed: () {},
@@ -38,15 +44,13 @@ class ShowProduct extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Container(
-                    width: double.infinity,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.yellow.withOpacity(0.8),
-                      borderRadius: BorderRadius.vertical(
-                          bottom: Radius.elliptical(
-                              MediaQuery.of(context).size.width,
-                              MediaQuery.of(context).size.height / 4)),
+                  ClipPath(
+                    clipper: ClipPathClass(),
+                    child: Container(
+                      width: double.infinity,
+                      height: 125,
+                     color: Color(item.bgColor),
+                      
                     ),
                   ),
                   const SizedBox(
@@ -57,8 +61,8 @@ class ShowProduct extends StatelessWidget {
               Positioned(
                   top: height / 35,
                   left: width / 3,
-                  child: Image.asset(
-                    'asset/images/banana.png',
+                  child: Image.network(
+                    item.image,
                     height: 150,
                     width: 150,
                   ))
@@ -69,12 +73,12 @@ class ShowProduct extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'Breaking Banana',
+                  item.name,
                   style: kTextStyleAppBar.copyWith(
                       fontWeight: FontWeight.bold, fontSize: 30),
                 ),
                 Text(
-                  '₹30/Kg',
+                  '₹${item.price}/Kg',
                   style: kTextStyleAppBar.copyWith(
                       fontWeight: FontWeight.bold, fontSize: 20),
                 ),
@@ -131,4 +135,30 @@ class ShowProduct extends StatelessWidget {
       ),
     );
   }
+}
+
+class ClipPathClass extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 80);
+
+    var firstControlPoint = Offset(size.width / 4, size.height);
+    var firstPoint = Offset(size.width / 2, size.height);
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstPoint.dx, firstPoint.dy);
+
+    var secondControlPoint = Offset(size.width - (size.width / 4), size.height);
+    var secondPoint = Offset(size.width, size.height - 80);
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondPoint.dx, secondPoint.dy);
+
+    path.lineTo(size.width, 0.0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
