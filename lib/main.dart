@@ -30,8 +30,7 @@ class MyApp extends StatelessWidget {
        theme: theme(),
       //  onGenerateRoute: AppRouter.onGenerateRoute,
       //  initialRoute: HomeScreen.routeName,
-      home:    HomeScreen(
-      ),
+      home:   HomeScreen()
       ),
     );
   }

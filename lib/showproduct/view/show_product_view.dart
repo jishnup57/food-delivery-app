@@ -59,13 +59,20 @@ class ShowProduct extends StatelessWidget {
                 ],
               ),
               Positioned(
-                  top: height / 35,
-                  left: width / 3,
-                  child: Image.network(
-                    item.image,
-                    height: 150,
-                    width: 150,
-                  ))
+                  top: 1,
+                  left: width / 4,
+                  child:
+                   Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(image: NetworkImage(item.image),
+                      
+                    ),
+                     
+                      
+                  ),
+                   ))
             ],
           ),
           Expanded(
@@ -83,7 +90,7 @@ class ShowProduct extends StatelessWidget {
                       fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 Text(
-                  'Banana are hign in pottassium and contain good level of protine and fiber.One medium size banana contains 422 milligrams of pottassium.',
+                  '${item.name} are hign in pottassium and contain good level of protine and fiber.One medium size banana contains 422 milligrams of pottassium.',
                   style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
@@ -93,7 +100,7 @@ class ShowProduct extends StatelessWidget {
                       fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 CircleAvatar(
-                  backgroundColor: Colors.deepPurple.shade300,
+                  backgroundColor: Colors.green,
                   radius: width / 9.5,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +127,7 @@ class ShowProduct extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.deepPurple.shade300,
+                          primary: Colors.green,
                           shape: const StadiumBorder()),
                       child: Text(
                         'Add to Cart',
