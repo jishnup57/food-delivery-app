@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/config/app_router.dart';
 import 'package:food_delivery_app/config/const.dart';
 import 'package:food_delivery_app/home_screen/model/product_model.dart';
 import 'package:food_delivery_app/showproduct/widget/nutrition_text.dart';
+import 'package:food_delivery_app/widget/commonappbar.dart';
 
 class ShowProduct extends StatelessWidget {
   const ShowProduct({Key? key,required this.item}) : super(key: key);
@@ -10,34 +10,8 @@ class ShowProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor:  Color(item.bgColor),
-        leading: TextButton.icon(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
-          onPressed: () =>Routes.pop(),
-          label: Text(
-            'BACK',
-            style: kTextStyleAppBar.copyWith(fontSize: 18),
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_outline),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined),
-            onPressed: () {},
-          )
-        ],
-        elevation: 0,
-        leadingWidth: 100,
-      ),
+      appBar: PreferredSize(preferredSize: const Size(double.infinity, 80),child: CommonAppBar(item: item),),
       body: Column(
         children: [
           Stack(
@@ -143,6 +117,7 @@ class ShowProduct extends StatelessWidget {
     );
   }
 }
+
 
 class ClipPathClass extends CustomClipper<Path> {
   @override

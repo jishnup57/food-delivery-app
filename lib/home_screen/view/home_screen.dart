@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    Icons.shopping_cart,
+                    Icons.shopping_bag_outlined,
                     size: 30,
                   ),
                 ),

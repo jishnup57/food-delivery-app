@@ -36,7 +36,7 @@ class NavDrawer extends StatelessWidget {
             ),
           
              const DrawerCard(icon: Icons.favorite,title: 'WISHLIST',),
-            const DrawerCard(icon: Icons.favorite,title: ' CART',)
+            const DrawerCard(icon: Icons.shopping_bag_sharp,title: ' CART',)
           ],
         ),
       ),
