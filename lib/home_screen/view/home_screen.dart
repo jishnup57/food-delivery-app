@@ -1,6 +1,7 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/config/const.dart';
+import 'package:food_delivery_app/drawer/view/drawer_view.dart';
 import 'package:food_delivery_app/home_screen/widget/fruit_card_items.dart';
 import 'package:food_delivery_app/home_screen/widget/item_title.dart';
 import 'package:food_delivery_app/home_screen/widget/vegcardshow.dart';
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    Icons.shopping_cart,
+                    Icons.shopping_bag_outlined,
                     size: 30,
                   ),
                 ),
@@ -157,11 +158,4 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class NavDrawer extends StatelessWidget {
-  const NavDrawer({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return const Drawer();
-  }
-}
